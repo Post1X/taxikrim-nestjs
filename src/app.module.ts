@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ClientsModule } from './clients/clients.module';
@@ -10,6 +10,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { StatusesModule } from './statuses/statuses.module';
 import { CarbrandsModule } from './carbrands/carbrands.module';
+import { setupSwagger } from './swagger';
 
 @Module({
   imports: [
@@ -30,4 +31,8 @@ import { CarbrandsModule } from './carbrands/carbrands.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    setupSwagger(this, consumer);
+  }
+}

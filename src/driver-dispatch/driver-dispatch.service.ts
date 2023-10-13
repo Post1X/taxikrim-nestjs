@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDriverDispatchDto } from './dto/create-driver-dispatch.dto';
-import { UpdateDriverDispatchDto } from './dto/update-driver-dispatch.dto';
 import { CallDriverDto } from './dto/call-driver.dto';
 import makeCall from '../utilities/makeCall';
 import generateFourRandomNumbers from '../utilities/generateRandomNumbers';
@@ -31,6 +30,7 @@ export class DriverDispatchService {
     );
     await newDriveDisp.save();
   }
+
   //
   async verifyNumber(verifyDriverDto) {
     const client = await this.driver_dispatchModel.findOne({
@@ -58,6 +58,7 @@ export class DriverDispatchService {
       };
     }
   }
+
   //
   async verificationData(
     createDriverDispatchDto: CreateDriverDispatchDto,
@@ -77,6 +78,7 @@ export class DriverDispatchService {
       return e;
     }
   }
+
   //
   async getStatus(req) {
     console.log(req.user_id);

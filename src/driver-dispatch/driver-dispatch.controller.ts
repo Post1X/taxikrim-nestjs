@@ -16,11 +16,9 @@ import { CreateDriverDispatchDto } from './dto/create-driver-dispatch.dto';
 import { UpdateDriverDispatchDto } from './dto/update-driver-dispatch.dto';
 import { AuthGuard } from '../auth/auth.guard';
 import { CallDriverDto } from './dto/call-driver.dto';
-import { AuthService } from '../auth/auth.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
-import { VerifyClientDto } from '../clients/dto/verify-client.dto';
 import { VerifyDriverDto } from './dto/verify-drivet.dto';
 
 @Controller('users/drivers')
